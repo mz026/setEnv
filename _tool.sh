@@ -21,3 +21,14 @@ function aptInstall()
     exit 1;
   fi
 }
+
+function aptUpdate()
+{
+  white "updating apt..."
+  if sudo apt-get update; then
+    green "update apt ok."
+  else
+    red "update apt failed."
+    exit 1;
+  fi
+}
