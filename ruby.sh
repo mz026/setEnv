@@ -10,7 +10,13 @@ aptInstall libmysqlclient15-dev;
 aptInstall build-essential;
 aptInstall zlib1g-dev;
 aptInstall libssl-dev;
-aptInstall libreadline-gplv2-dev;
+
+white "now intalling libreadline-dev..."
+if sudo apt-get install libreadline5-dev; then
+  green "install libreadline5-dev ok."
+else
+  aptInstall libreadline-gplv2-dev;
+fi
 
 white "now installing rvm...";
 curl -L get.rvm.io | bash -s stable
