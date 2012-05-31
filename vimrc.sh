@@ -14,6 +14,5 @@ ln ~/.vimrcRepo/.vimrc ~/.vimrc
 green "link ~/.vimrc to ~/.vimrcRepo/.vimrc"
 
 if [ "`which apt-get`" != '' ]; then
-  aptInstall vim-gnome;
   aptInstall exuberant-ctags;
 fi
