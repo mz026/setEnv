@@ -10,7 +10,7 @@ git clone git://github.com/mz026/vimrc.git ~/.vimrcRepo
 green "cloned vimrc into ~/.vimrcRepo!";
 
 
-ln ~/.vimrcRepo/.vimrc ~/.vimrc
+ln -s ~/.vimrcRepo/.vimrc ~/.vimrc
 green "link ~/.vimrc to ~/.vimrcRepo/.vimrc"
 
 if [ "`which apt-get`" != '' ]; then
