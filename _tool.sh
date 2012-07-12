@@ -32,3 +32,13 @@ function aptUpdate()
     exit 1;
   fi
 }
+
+function execute()
+{
+  if $1; then
+    green "execute '$1' ok!";
+  else
+    red "execute '$1' failed.";
+    exit 1;
+  fi
+}
