@@ -15,8 +15,10 @@ aptInstall php5-gd;
 aptInstall php5-cli;
 aptInstall php5-curl;
 aptInstall php5-tidy;
+aptInstall php5-mcrypt;
 aptInstall php-pear;
 aptInstall git-core;
+
 
 white "now discovering pear channels..."
 sudo pear upgrade pear
