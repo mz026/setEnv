@@ -2,7 +2,7 @@
 source _tool.sh
 
 white "now cloning gitconfig repository...";
-git clone git@github.com:mz026/gitconfig.git ~/.gitconfigRepo;
+git clone git://github.com/mz026/gitconfig.git ~/.gitconfigRepo;
 green "cloned gitconfig to .gitconfigRepo !";
 
 ln -s ~/.gitconfigRepo/.gitconfig ~/.gitconfig
