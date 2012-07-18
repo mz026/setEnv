@@ -12,6 +12,8 @@ if [ "`which gem`" == '' ]; then
 fi
 
 aptInstall libbuilder-ruby;
+aptInstall libxslt-dev;
+aptInstall libxml2-dev;
 
 gemInstall rails;
 gemInstall mysql;
