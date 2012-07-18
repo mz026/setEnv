@@ -22,6 +22,17 @@ function aptInstall()
   fi
 }
 
+function gemInstall()
+{
+  white "now install gem $1...";
+  if gem install $1; then
+    green "install gem $1 ok!";
+  else
+    red "install gem $1 failed...";
+    exit 1;
+  fi
+}
+
 function aptUpdate()
 {
   white "updating apt..."
