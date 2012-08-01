@@ -23,6 +23,7 @@ white "now installing rvm...";
 curl -L get.rvm.io | bash -s stable
 echo "[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 source ~/.bash_profile
+echo "source ~/.bashrc" >> ~/.bash_profile
 
 if rvm install 1.9.3; then
   white 'execute "source ~/.bash_profile to finish the installation."'
