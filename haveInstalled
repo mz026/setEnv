@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+def have_installed? package
+  result = `dpkg -l | grep #{package}`
+  ! result.match(/(^|\s)#{package}\s/).nil? 
+end
+
+def all_installed? packages
+  packages.each do |pkg|
+    return false unless have_installed? pkg
+  end
+  
+  true
+end
+
+if all_installed? ARGV
+  STDOUT.puts '1'
+else
+  STDOUT.puts '0' 
+end
+

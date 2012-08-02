@@ -21,10 +21,10 @@ gemInstall passenger;
 
 aptInstall libcurl4-openssl-dev
 
-if [[ "`which apache2ctl`" == '' ]]; then
-  aptInstall apache2
-else
+if [[ "`./haveInstalled apache2`" == '1' ]]; then
   white "apache2 has been installed, skip it."
+else
+  aptInstall apache2
 fi
 
 aptInstall apache2-prefork-dev
