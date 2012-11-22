@@ -25,7 +25,7 @@ function aptInstall()
 function gemInstall()
 {
   white "now install gem $1...";
-  if gem install $1; then
+  if gem install --no-rdoc --no-ri $1; then
     green "install gem $1 ok!";
   else
     red "install gem $1 failed...";
