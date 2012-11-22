@@ -14,7 +14,7 @@ function red()
 function aptInstall()
 {
   white "now installing $1 ...";
-  if sudo apt-get install $1; then
+  if sudo apt-get install -y $1; then
     green "install $1 ok!";
   else
     red "install $1 failed...";
