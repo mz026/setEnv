@@ -138,8 +138,10 @@ export PATH=$PATH:$AWS_CLOUDWATCH_HOME/bin
     when 'ec2'
       bash_settings = <<-SETTING
 export EC2_HOME=#{src_path}
-export AWS_EC2_URL=https://ec2.ap-southeast-1.amazonaws.com  
+export EC2_URL=https://ec2.ap-southeast-1.amazonaws.com
 export PATH=$PATH:$EC2_HOME/bin
+export AWS_ACCESS_KEY=<your access key id>
+export AWS_SECRET_KEY=<your access key>
       SETTING
     end
     
@@ -151,7 +153,7 @@ export PATH=$PATH:$EC2_HOME/bin
 
   def load_bash_file_in_bashrc
     File.open(File.join(HOME, '.bashrc'), 'a+') do |file|
-      file.write("source #{@bash_file}") 
+      file.write("source #{@bash_file}\n") 
     end
   end
 
