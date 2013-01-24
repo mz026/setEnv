@@ -1,11 +1,22 @@
 #!/usr/bin/env ruby
 
+class Helpers
+  def self.green msg
+    puts "\033[1;32;40m #{msg} \033[0m"
+  end
+
+  def self.red msg
+    puts "\033[1;31;40m #{msg} \033[0m"
+  end
+end
+
 class AWSSetter
   HOME = ENV['HOME']
   AUTOSCALING_SRC_LINK = 
     "http://ec2-downloads.s3.amazonaws.com/AutoScaling-2011-01-01.zip"
   CLOUDWATCH_SRC_LINK = 
     "http://ec2-downloads.s3.amazonaws.com/CloudWatch-2010-08-01.zip"
+  EC2_SRC_LINK = "http://s3.amazonaws.com/ec2-downloads/ec2-api-tools.zip"
 
   def initialize
     @root_dir = "#{HOME}/.aws"
@@ -29,6 +40,9 @@ class AWSSetter
     create_key_template
     install_commandline_tool AUTOSCALING_SRC_LINK, "autoscaling"
     install_commandline_tool CLOUDWATCH_SRC_LINK, "cloudwatch"
+    install_commandline_tool EC2_SRC_LINK, "ec2"
+    load_bash_file_in_bashrc
+    print_hint_message
   end
 
   
@@ -120,6 +134,13 @@ export AWS_CLOUDWATCH_URL=https://monitoring.ap-southeast-1.amazonaws.com
 export PATH=$PATH:$AWS_CLOUDWATCH_HOME/bin
 
       SETTING
+
+    when 'ec2'
+      bash_settings = <<-SETTING
+export EC2_HOME=#{src_path}
+export AWS_EC2_URL=https://ec2.ap-southeast-1.amazonaws.com  
+export PATH=$PATH:$EC2_HOME/bin
+      SETTING
     end
     
     File.open(@bash_file, 'a+') do |file|
@@ -127,7 +148,26 @@ export PATH=$PATH:$AWS_CLOUDWATCH_HOME/bin
     end
 
   end
+
+  def load_bash_file_in_bashrc
+    File.open(File.join(HOME, '.bashrc'), 'a+') do |file|
+      file.write("source #{@bash_file}") 
+    end
+  end
+
+  def print_hint_message
+    Helpers.green "done, please "
+    Helpers.green "1) update your key"
+    Helpers.green "2) source ~/.bashrc"
+  end
+
 end
 
-setter = AWSSetter.new
-setter.set
+
+begin
+  setter = AWSSetter.new
+  setter.set
+rescue Exception => err
+  Helpers.red err.message
+end
+
