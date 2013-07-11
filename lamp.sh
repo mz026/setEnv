@@ -19,21 +19,5 @@ aptInstall php5-mcrypt;
 aptInstall php-pear;
 aptInstall git-core;
 
-
-white "now discovering pear channels..."
-sudo pear upgrade pear
-sudo pear channel-discover pear.phpunit.de
-sudo pear channel-discover pear.symfony-project.com
-sudo pear channel-discover pear.symfony.com
-sudo pear channel-discover components.ez.no
-sudo pear update-channels
-sudo pear upgrade-all
-
-white "installing phpunit ..."
-sudo pear install --alldeps phpunit/PHPUnit
-
-white "installing phpunit_selenium ..."
-sudo pear install phpunit/phpunit_selenium
-
 green "ya!";
 
