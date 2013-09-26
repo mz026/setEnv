@@ -25,11 +25,11 @@ echo "[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm" >> ~/.ba
 source ~/.bash_profile
 echo "source ~/.bashrc" >> ~/.bash_profile
 
-if rvm install 1.9.3; then
+if rvm install 2.0.0; then
   white 'execute "source ~/.bash_profile to finish the installation."'
-  green "install ruby 1.9.3 ok.";
+  green "install ruby 2.0.0 ok.";
 else
-  red "install ruby 1.9.3 failed."
+  red "install ruby 2.0.0 failed."
   exit 1;
 fi
 
