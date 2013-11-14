@@ -18,6 +18,7 @@ aptInstall php5-tidy;
 aptInstall php5-mcrypt;
 aptInstall php-pear;
 aptInstall git-core;
+aptInstall phpmyadmin;
 
 green "ya!";
 
