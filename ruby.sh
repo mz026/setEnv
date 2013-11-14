@@ -21,8 +21,8 @@ fi
 
 white "now installing rvm...";
 curl -L get.rvm.io | bash -s stable
-echo "[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
-source ~/.bash_profile
+echo "[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm" >> ~/.bashrc
+source ~/.bashrc
 echo "source ~/.bashrc" >> ~/.bash_profile
 
 if rvm install 2.0.0; then
@@ -33,4 +33,3 @@ else
   exit 1;
 fi
 
-echo "[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm" >> ~/.bashrc
